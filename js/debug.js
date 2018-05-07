@@ -35,17 +35,21 @@ function Param(){
 }
 
 function setDebugParam(){
+    /*
   $("#jCount").val(Param.jCount);
   $("#jScale").val(Param.jScale);
   $("#jScaleRandom").val(Param.jScaleRandom);
   $("#jTurb").val(Param.jTurb);
   $("#jSpeed").val(Param.jSpeed);
+  */
 }
 
 function readDebugParam(){
+    /*
   Param.jCount = parseFloat($("#jCount").val());
   Param.jScale = parseFloat($("#jScale").val());
   Param.jScaleRandom = parseFloat($("#jScaleRandom").val());
   Param.jTurb = parseFloat($("#jTurb").val());
   Param.jSpeed = parseFloat($("#jSpeed").val());
+  */
 }

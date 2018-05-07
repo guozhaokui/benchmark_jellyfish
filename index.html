@@ -18,14 +18,6 @@
 <script type="text/javascript" src="js/drawJellyfish.js"></script>
 <script type="text/javascript" src="js/drawScene.js"></script>
 
-<style>
-body {
-  font-family:  'Monda', sans-serif;
-  margin: 0;
-  overflow: hidden;
-}
-</style>
-
 <script type="text/javascript">
 $(document).ready(function(){
   webGLStart();
@@ -34,38 +26,5 @@ $(document).ready(function(){
 
 </head>
 <body>
-    <div id="statusBar">
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://akirodic.com/p/jellyfish/" data-text="Interact with beautiful jellyfish in your browser!" data-via="akirodic" data-hashtags="WebGL">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<a href="https://twitter.com/akirodic" class="twitter-follow-button" data-show-count="false">Follow @akirodic</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </div>
-    <div id="console">
-       <div class="console-field" id="debugJellyfish">
-          <b>jellyfish debug</b>
-            Frame rate: <span id="frameRate">NaN</span><br />
-
-            <span class="input-section">count</span>
-            <input type="text" class="textboxDebug" id="jCount" /><br />
-            <span class="input-section">size</span>
-            <input type="text" class="textboxDebug" id="jScale" />
-            <input type="text" class="textboxDebug" id="jScaleRandom"  /><br />
-            <span class="input-section">Turbulence</span>
-            <input type="text" class="textboxDebug" id="jTurb" /><br />
-            <span class="input-section">speed</span>
-            <input type="text" class="textboxDebug" id="jSpeed" /><br />
-        </div>
-    </div>
-    <canvas id="webgl-canvas"></canvas>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-68216254-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-
 </body>
 </html>

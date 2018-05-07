@@ -11,7 +11,7 @@ function getCurrentTime() {
   localParam.cycle32 = parseInt(localParam.currentTime*30 % 32 + 1);
   localParam.fps = 1000.0/localParam.elapsed;
   localParam.fpsAverage = (localParam.fpsAverage*9+localParam.fps)/10;
-  $("#frameRate").text(pad2(localParam.fpsAverage));
+  //$("#frameRate").text(pad2(localParam.fpsAverage));
 }
 
 function tick(){

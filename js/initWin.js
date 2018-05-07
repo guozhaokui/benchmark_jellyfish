@@ -3,45 +3,43 @@ var gl;
 var canvas,docWidth,docHeight;
 
 function initWin(w,h){
+    w=canvas.width =  document.body.clientWidth|| window.innerWidth;
+    h=canvas.height = document.body.clientHeight || window.innerHeight;
 
-  (w) ? docWidth = w : docWidth = $(window).width();
-  (h) ? docHeight = h : docHeight = $(window).height();
-  $("#webgl-canvas").width(docWidth);
-  $("#webgl-canvas").height(docHeight);    
-  canvas.width = docWidth;
-  canvas.height = docHeight;
-  try {
-    gl = canvas.getContext( "experimental-webgl" ) ;
-    gl.viewportWidth = docWidth;
-    gl.viewportHeight = docHeight;
-  } catch(e) {
-  }
-  if (!gl) {
-    alert("Your browser failed to initialize WebGL.");
-  }
+    try {
+        gl = canvas.getContext( "experimental-webgl" ) ;
+        gl.viewportWidth = w;
+        gl.viewportHeight = h;
+    } catch(e) {  
+
+    }
+    if (!gl) {
+        alert("Your browser failed to initialize WebGL.");
+    }
 }
 
-$(window).resize(function() {
-  initWin();
-});
+window.onresize =function() {
+    initWin(null,null);
+};
 
 function webGLStart() {
-  canvas = document.getElementById("webgl-canvas");
+    canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
 
-  initWin();
-  initBuffers();
-  initShaders();
-  initTextures();
+    initWin();
+    initBuffers();
+    initShaders();
+    initTextures();
 
-  setDebugParam();
-  
-  gl.clearColor(0., 0., 0., 0.);
-  gl.clearDepth(1.);
-  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-  gl.enable(gl.BLEND);
-  gl.enable(gl.DEPTH_TEST);
-  gl.depthFunc(gl.LEQUAL);
-  
-  interact();
-  animate();
+    setDebugParam();
+
+    gl.clearColor(0., 0., 0., 0.);
+    gl.clearDepth(1.);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.enable(gl.BLEND);
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
+
+    interact();
+    animate();
 }
