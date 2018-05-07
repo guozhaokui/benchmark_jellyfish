@@ -25,45 +25,46 @@ function createProgram(fragmentShaderID, vertexShaderID) {
     var fragmentShader = getShader(gl, fragmentShaderID,false);
     var vertexShader = getShader(gl, vertexShaderID,true);
 
-    var program = gl.createProgram();
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    var nProgram = gl.createProgram();
+    var program = {nGpuProg:nProgram};
+    gl.attachShader(nProgram, vertexShader);
+    gl.attachShader(nProgram, fragmentShader);
+    gl.linkProgram(nProgram);
+    if (!gl.getProgramParameter(nProgram, gl.LINK_STATUS)) {
         alert("Could not initialise shaders");
     }
 
-    program.vertexPositionAttribute = gl.getAttribLocation(program,   "aVertexPosition");
-    gl.enableVertexAttribArray(program.vertexPositionAttribute);
-    program.vertexNormalAttribute = gl.getAttribLocation(program,     "aVertexNormal");
-    gl.enableVertexAttribArray(program.vertexNormalAttribute);
-    program.vertexColorAttribute = gl.getAttribLocation(program,      "aVertexColor");
-    gl.enableVertexAttribArray(program.vertexColorAttribute);
-    program.textureCoordAttribute = gl.getAttribLocation(program,     "aTextureCoord");
-    gl.enableVertexAttribArray(program.textureCoordAttribute);
+    program.vertexPositionAttribute = gl.getAttribLocation(nProgram,   "aVertexPosition");
+    gl.enableVertexAttribArray(nProgram.vertexPositionAttribute);
+    program.vertexNormalAttribute = gl.getAttribLocation(nProgram,     "aVertexNormal");
+    gl.enableVertexAttribArray(nProgram.vertexNormalAttribute);
+    program.vertexColorAttribute = gl.getAttribLocation(nProgram,      "aVertexColor");
+    gl.enableVertexAttribArray(nProgram.vertexColorAttribute);
+    program.textureCoordAttribute = gl.getAttribLocation(nProgram,     "aTextureCoord");
+    gl.enableVertexAttribArray(nProgram.textureCoordAttribute);
 
-    program.skinWeightAttribute = gl.getAttribLocation(program,     "aSkinWeight");
-    gl.enableVertexAttribArray(program.skinWeightAttribute);
+    program.skinWeightAttribute = gl.getAttribLocation(nProgram,     "aSkinWeight");
+    gl.enableVertexAttribArray(nProgram.skinWeightAttribute);
 
-    program.world = gl.getUniformLocation(program,              "uWorld");
-    program.worldView = gl.getUniformLocation(program,          "uWorldView");
-    program.worldViewProj = gl.getUniformLocation(program,      "uWorldViewProj");
-    program.viewInv = gl.getUniformLocation(program,            "uView");
-    program.viewInv = gl.getUniformLocation(program,            "uViewInv");
+    program.world = gl.getUniformLocation(nProgram,              "uWorld");
+    program.worldView = gl.getUniformLocation(nProgram,          "uWorldView");
+    program.worldViewProj = gl.getUniformLocation(nProgram,      "uWorldViewProj");
+    program.viewInv = gl.getUniformLocation(nProgram,            "uView");
+    program.viewInv = gl.getUniformLocation(nProgram,            "uViewInv");
 
     program.sampler = [];
-    program.sampler[0] = gl.getUniformLocation(program,           "uSampler0");
-    program.sampler[1] = gl.getUniformLocation(program,           "uSampler1");
-    program.sampler[2] = gl.getUniformLocation(program,           "uSampler2");
+    program.sampler[0] = gl.getUniformLocation(nProgram,           "uSampler0");
+    program.sampler[1] = gl.getUniformLocation(nProgram,           "uSampler1");
+    program.sampler[2] = gl.getUniformLocation(nProgram,           "uSampler2");
 
-    program.joint0 = gl.getUniformLocation(program,             "uJoint0");
-    program.joint1 = gl.getUniformLocation(program,             "uJoint1");
-    program.joint2 = gl.getUniformLocation(program,             "uJoint2");
-    program.joint3 = gl.getUniformLocation(program,             "uJoint3");
-    program.joint0InvTranspose = gl.getUniformLocation(program, "uJoint0InvTranspose");
+    program.joint0 = gl.getUniformLocation(nProgram,             "uJoint0");
+    program.joint1 = gl.getUniformLocation(nProgram,             "uJoint1");
+    program.joint2 = gl.getUniformLocation(nProgram,             "uJoint2");
+    program.joint3 = gl.getUniformLocation(nProgram,             "uJoint3");
+    program.joint0InvTranspose = gl.getUniformLocation(nProgram, "uJoint0InvTranspose");
 
-    program.currentTime = gl.getUniformLocation(program,          "uCurrentTime");
-    program.currentJellyfishTime = gl.getUniformLocation(program, "uCurrentJellyfishTime");
+    program.currentTime = gl.getUniformLocation(nProgram,          "uCurrentTime");
+    program.currentJellyfishTime = gl.getUniformLocation(nProgram, "uCurrentJellyfishTime");
 
     return program;
 }
@@ -82,5 +83,5 @@ function initShaders() {
 
 function setShader(name){
   currentProgram = shaderProgram[name];
-  gl.useProgram(currentProgram);
+  gl.useProgram(currentProgram.nGpuProg);
 }

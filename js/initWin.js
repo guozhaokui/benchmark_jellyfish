@@ -3,6 +3,8 @@
 var gl;
 var canvas,docWidth,docHeight;
 
+var gProgram={};
+
 function patchGL(gl){
     //shader: WebGLShader | null, pname: number
     gl.getShaderParameter=function(shader,pname){
