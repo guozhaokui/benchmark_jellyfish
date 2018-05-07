@@ -1,4 +1,5 @@
 // JavaScript Document<script type="text/javascript">
+/**@type {WebGLRenderingContext} */
 var gl;
 var canvas,docWidth,docHeight;
 
@@ -42,4 +43,8 @@ function webGLStart() {
 
     interact();
     animate();
+}
+
+window.onload=function(){
+    webGLStart();
 }
