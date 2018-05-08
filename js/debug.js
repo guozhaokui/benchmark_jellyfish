@@ -35,6 +35,9 @@ function Param(){
 }
 
 function setDebugParam(){
+    if(!window.conch){
+        document.getElementById('jCount').value = Param.jCount;
+    }
     /*
   $("#jCount").val(Param.jCount);
   $("#jScale").val(Param.jScale);

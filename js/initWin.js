@@ -5,6 +5,7 @@ var canvas,docWidth,docHeight;
 var useCmdBuf=window.conch;
 var _glCommandEncoder;
 var gProg={};
+var frameRateDiv;
 
 function patchGL(gl){
     //shader: WebGLShader | null, pname: number
@@ -23,6 +24,17 @@ function patchGL(gl){
             return true;
         }
         return true;
+    }
+
+    var old_createBuffer = gl.createBuffer;
+    gl.createBuffer=function(){
+        var fid=old_createBuffer.call(gl);
+        return {id:fid};
+    }
+
+    var old_bindBuffer=gl.bindBuffer;
+    gl.bindBuffer=function(target, buffer){
+        old_bindBuffer.call(gl,target,buffer.id);
     }
 
     //getAttribLocation(program: WebGLProgram | null, name: string): number;
@@ -45,7 +57,7 @@ function initWin(w,h){
     w=canvas.width =  document.body.clientWidth|| window.innerWidth;
     h=canvas.height = document.body.clientHeight || window.innerHeight;
     try {
-        gl = canvas.getContext( "experimental-webgl" ) ;
+        gl = canvas.getContext( "experimental-webgl");//, {antialias:false} ) ;
         gl.viewportWidth = w;
         gl.viewportHeight = h;
     } catch(e) {  
@@ -55,6 +67,9 @@ function initWin(w,h){
         alert("Your browser failed to initialize WebGL.");
     }
     patchGL(gl);
+    if(!window.conch){
+        frameRateDiv = document.getElementById('frameRate');
+    }
 }
 
 window.onresize =function() {
@@ -89,10 +104,11 @@ window.onload=function(){
 
 function addJellyfish(){
     Param.jCount+=5;
+    setDebugParam();
     console.log('count='+Param.jCount);
 }
 
 document.addEventListener( "touchend",addJellyfish);
-document.addEventListener('mouseup',addJellyfish);
+//document.addEventListener('mouseup',addJellyfish);
 
 
