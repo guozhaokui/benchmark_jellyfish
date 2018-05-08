@@ -76,11 +76,10 @@ void main(void) {
 }
 `,
 jellyfish_fs : `
-precision mediump float;
+precision highp float;
 
 uniform sampler2D uSampler0;
 uniform sampler2D uSampler1;
-uniform sampler2D uSampler2;
 
 uniform float uCurrentTime;
 

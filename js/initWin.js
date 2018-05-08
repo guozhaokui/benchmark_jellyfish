@@ -86,3 +86,13 @@ function webGLStart() {
 window.onload=function(){
     webGLStart();
 }
+
+function addJellyfish(){
+    Param.jCount+=5;
+    console.log('count='+Param.jCount);
+}
+
+document.addEventListener( "touchend",addJellyfish);
+document.addEventListener('mouseup',addJellyfish);
+
+
