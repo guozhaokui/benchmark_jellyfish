@@ -39,7 +39,7 @@ function bindTexture(name, i) {
     if (i==1) gl.activeTexture(gl.TEXTURE1);
     if (i==2) gl.activeTexture(gl.TEXTURE2);
     gl.bindTexture(gl.TEXTURE_2D, texture[name]);
-    gl.uniform1i(currentProgram.sampler[i], i);
+    gl.uniform1i(gProg.sampler[i], i);
   }
 }
 

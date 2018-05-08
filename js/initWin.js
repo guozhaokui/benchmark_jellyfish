@@ -2,6 +2,7 @@
 /**@type {WebGLRenderingContext} */
 var gl;
 var canvas,docWidth,docHeight;
+var gProg={};
 
 function patchGL(gl){
     //shader: WebGLShader | null, pname: number

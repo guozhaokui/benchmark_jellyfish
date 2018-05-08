@@ -33,37 +33,37 @@ function createProgram(fragmentShaderID, vertexShaderID) {
         alert("Could not initialise shaders");
     }
 
-    program.vertexPositionAttribute = gl.getAttribLocation(program,   "aVertexPosition");
-    gl.enableVertexAttribArray(program.vertexPositionAttribute);
-    program.vertexNormalAttribute = gl.getAttribLocation(program,     "aVertexNormal");
-    gl.enableVertexAttribArray(program.vertexNormalAttribute);
-    program.vertexColorAttribute = gl.getAttribLocation(program,      "aVertexColor");
-    gl.enableVertexAttribArray(program.vertexColorAttribute);
-    program.textureCoordAttribute = gl.getAttribLocation(program,     "aTextureCoord");
-    gl.enableVertexAttribArray(program.textureCoordAttribute);
+    gProg.vertexPositionAttribute = gl.getAttribLocation(program,   "aVertexPosition");
+    gl.enableVertexAttribArray(gProg.vertexPositionAttribute);
+    gProg.vertexNormalAttribute = gl.getAttribLocation(program,     "aVertexNormal");
+    gl.enableVertexAttribArray(gProg.vertexNormalAttribute);
+    gProg.vertexColorAttribute = gl.getAttribLocation(program,      "aVertexColor");
+    gl.enableVertexAttribArray(gProg.vertexColorAttribute);
+    gProg.textureCoordAttribute = gl.getAttribLocation(program,     "aTextureCoord");
+    gl.enableVertexAttribArray(gProg.textureCoordAttribute);
 
-    program.skinWeightAttribute = gl.getAttribLocation(program,     "aSkinWeight");
-    gl.enableVertexAttribArray(program.skinWeightAttribute);
+    gProg.skinWeightAttribute = gl.getAttribLocation(program,     "aSkinWeight");
+    gl.enableVertexAttribArray(gProg.skinWeightAttribute);
 
-    program.world = gl.getUniformLocation(program,              "uWorld");
-    program.worldView = gl.getUniformLocation(program,          "uWorldView");
-    program.worldViewProj = gl.getUniformLocation(program,      "uWorldViewProj");
-    program.viewInv = gl.getUniformLocation(program,            "uView");
-    program.viewInv = gl.getUniformLocation(program,            "uViewInv");
+    gProg.world = gl.getUniformLocation(program,              "uWorld");
+    gProg.worldView = gl.getUniformLocation(program,          "uWorldView");
+    gProg.worldViewProj = gl.getUniformLocation(program,      "uWorldViewProj");
+    gProg.viewInv = gl.getUniformLocation(program,            "uView");
+    gProg.viewInv = gl.getUniformLocation(program,            "uViewInv");
 
-    program.sampler = [];
-    program.sampler[0] = gl.getUniformLocation(program,           "uSampler0");
-    program.sampler[1] = gl.getUniformLocation(program,           "uSampler1");
-    program.sampler[2] = gl.getUniformLocation(program,           "uSampler2");
+    gProg.sampler = [];
+    gProg.sampler[0] = gl.getUniformLocation(program,           "uSampler0");
+    gProg.sampler[1] = gl.getUniformLocation(program,           "uSampler1");
+    gProg.sampler[2] = gl.getUniformLocation(program,           "uSampler2");
 
-    program.joint0 = gl.getUniformLocation(program,             "uJoint0");
-    program.joint1 = gl.getUniformLocation(program,             "uJoint1");
-    program.joint2 = gl.getUniformLocation(program,             "uJoint2");
-    program.joint3 = gl.getUniformLocation(program,             "uJoint3");
-    program.joint0InvTranspose = gl.getUniformLocation(program, "uJoint0InvTranspose");
+    gProg.joint0 = gl.getUniformLocation(program,             "uJoint0");
+    gProg.joint1 = gl.getUniformLocation(program,             "uJoint1");
+    gProg.joint2 = gl.getUniformLocation(program,             "uJoint2");
+    gProg.joint3 = gl.getUniformLocation(program,             "uJoint3");
+    gProg.joint0InvTranspose = gl.getUniformLocation(program, "uJoint0InvTranspose");
 
-    program.currentTime = gl.getUniformLocation(program,          "uCurrentTime");
-    program.currentJellyfishTime = gl.getUniformLocation(program, "uCurrentJellyfishTime");
+    gProg.currentTime = gl.getUniformLocation(program,          "uCurrentTime");
+    gProg.currentJellyfishTime = gl.getUniformLocation(program, "uCurrentJellyfishTime");
 
     return program;
 }
