@@ -1,10 +1,5 @@
 
 function drawScene() {
-    if (_glCommandEncoder){
-        _glCommandEncoder.clearEncoding();
-        gl.beginCommandEncoding(_glCommandEncoder);
-    }
-    
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clearColor(0,0,0,1);
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -26,12 +21,6 @@ function drawScene() {
     simulate();
     drawJellyfish();
     //gl.flush();
-    if (_glCommandEncoder){
-        gl.endCommandEncoding();
-        gl.useCommandEncoder(_glCommandEncoder.getPtrID(), -1, 4);
-	}
-    
-    gl.commit && gl.commit();
 }
 
 

@@ -3,7 +3,6 @@
 var gl;
 var canvas,docWidth,docHeight;
 var useCmdBuf=window.conch;
-var _glCommandEncoder;
 var gProg={};
 var frameRateDiv;
 
@@ -46,11 +45,6 @@ function patchGL(gl){
     /*
     uSampler0  uSampler1   uSampler2  uJoint0   uJoint1 uJoint2  uJoint3 uJoint0InvTranspose   uCurrentTime  uCurrentJellyfishTime
     */
-
-    if(useCmdBuf){
-        _glCommandEncoder =gl.createCommandEncoder(102400, 2560, false);
-    } 
-
 }
 
 function initWin(w,h){
